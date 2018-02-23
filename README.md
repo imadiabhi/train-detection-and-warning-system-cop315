@@ -1,4 +1,4 @@
-# COP315_Railway
+# Train Detection and Warning System COP315
 
 To warn construction workers working on train tracks about approaching trains through a hooter
 
