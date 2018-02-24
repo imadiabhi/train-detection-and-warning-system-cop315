@@ -10,13 +10,13 @@ To warn construction workers working on train tracks about approaching trains th
  
  Constraints: This needs to be done without any device or sensing on the tracks or on the locomotives
 
-Our Proposal
 
-Thus, the project can be divided into three broad categories namely:
+
+The project can be divided into three broad categories namely:
 
 • Primary Sensor: Audio Recording and Signal Processing
 
-• Secondary Sensing: Ultrasound/Laser/Thermal/Image Sensing
+• Secondary Sensing: Ultrasound Sensing and direction detection
 
 • Communication: from sensor to Work Site through Radio Waves
 
