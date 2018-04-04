@@ -14,4 +14,4 @@ card 0: Device [USB PnP Sound Device], device 0: USB Audio [USB Audio]
   
 To start recording for 20s and save changes in test.wav
 
-$ arecord -f cd -D plughw:1,0 -d 20 test.wav
+    $ arecord -f cd -D plughw:1,0 -d 20 test.wav
