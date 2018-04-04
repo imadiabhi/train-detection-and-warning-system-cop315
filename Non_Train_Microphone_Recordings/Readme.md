@@ -1,8 +1,8 @@
-//The different sample recordings of Microphone, after connecting from Raspberry Pi are saved here.
+The different sample recordings of Microphone, after connecting from Raspberry Pi are saved here.
 
-//To see the attached Audio Devices:
+To see the attached Audio Devices:
 
-arecord –l
+    arecord –l
 
 **** List of CAPTURE Hardware Devices ****
 
@@ -12,6 +12,6 @@ card 0: Device [USB PnP Sound Device], device 0: USB Audio [USB Audio]
   
   Subdevice #0: subdevice #0
   
-//To start recording for 20s and save changes in test.wav
+To start recording for 20s and save changes in test.wav
 
 $ arecord -f cd -D plughw:1,0 -d 20 test.wav
