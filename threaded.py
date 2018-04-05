@@ -3,9 +3,9 @@ import wave
 import scipy.io.wavfile as wav
 import numpy as np
 import math
-
-import RPi.GPIO as GPIO
+from threading import Thread
 import time
+import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 TRIG1=23
 ECHO1=24
@@ -20,8 +20,8 @@ GPIO.setup(LED,GPIO.OUT)
 flag = False
 var = 0
 
-int audiotrig = 0
-int ultratrig = 0
+audiotrig = 0
+ultratrig = 0
 
 class Recorder(object):
     '''A recorder class for recording audio to a WAV file.
@@ -107,19 +107,22 @@ def audio_check():
         rec = Recorder(channels=2)
         with rec.open('recorded_sound.wav', 'wb') as recfile:
         	recfile.record(duration=6.1)
-
+        (rate,t19) = wav.read("19.wav")    
         (rate,t37) = wav.read("37.wav")
         (rate,t) = wav.read("recorded_sound.wav")
         t=t[0:264600]
+        t19 = t19/32767.0
         t37 = t37/32767.0
         t = t/32767.0
+        t19e = abs(np.fft.fft(t19.T))
         t37e = abs(np.fft.fft(t37.T))
         te = abs(np.fft.fft(t.T))
-        R = corr2(t37e,te)
+        R1 = corr2(t37e,te)
+        R2 = corr2(t19e,te)
         # print(R)
         # if(R>0.65):
         #     print("Train is Here")
-        if(R>0.65):
+        if(R1>0.65 or R2>0.65):
             audiotrig=1
         else:
             audiotrig=0
@@ -179,15 +182,18 @@ def ultra_check():
 def Final_trig():
     while(1):
         if(ultratrig==1 and audiotrig==1):
-            threadLock.acquire()
+            #threadLock.acquire()         ---------------------------------------------check
             GPIO.output(LED,True)
             time.sleep(10)
             GPIO.output(LED,False)
-            threadLock.release()
+            #threadLock.release()
 
 try:
-    thread.start_new_thread(audio_check,())
-    thread.start_new_thread(ultra_check,())
-    thread.start_new_thread(Final_trig,())
+    t1 = Thread(target=audio_check, args=())
+    t2 = Thread(target=ultra_check, args=())
+    t3 = Thread(target=Final_trig, args=())
+    t1.start()
+    t2.start()
+    t3.start()
 except:
     print("Unable to pass thread")
