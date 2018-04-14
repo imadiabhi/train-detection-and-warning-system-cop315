@@ -20,3 +20,4 @@ The project can be divided into three broad categories namely:
 
 • Communication: from sensor to Work Site through Radio Waves
 
+Testing_1 Video Link-https://drive.google.com/open?id=1QG19IM5HKROoPMoQhQ1xRj1ld7ziSLUO
