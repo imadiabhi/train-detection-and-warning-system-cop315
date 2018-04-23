@@ -19,4 +19,5 @@ The project can be divided into three broad categories namely:
 • Secondary Sensing: Ultrasound Sensing and direction detection
 
 • Communication: from sensor to Work Site through Radio Waves
+
 Project Video: https://drive.google.com/open?id=1GIuOCoNYL_itJABbbqJyGFMZoVTwS1PO
