@@ -21,3 +21,5 @@ The project can be divided into three broad categories namely:
 • Communication: from sensor to Work Site through Radio Waves
 
 Project Video: https://drive.google.com/open?id=1GIuOCoNYL_itJABbbqJyGFMZoVTwS1PO
+
+Demonstration Video at Open House: https://drive.google.com/open?id=1EAB749_9eHjMAjx3-7KGrJ5BuY6-FDaO
