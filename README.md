@@ -33,5 +33,7 @@ This code continuously and concurrently run audio detection as well as obstacle 
 
 ### Links:
 Blog: https://medium.com/@cop.ghaks/safety-device-for-railway-track-workers-265cd55ec4d7
+
 Project video: https://www.youtube.com/watch?v=Y2kau7kRKZ4
+
 Demonstration video: https://www.youtube.com/watch?v=ekyyWt6Qc-o
