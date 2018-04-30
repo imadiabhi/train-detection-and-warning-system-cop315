@@ -24,8 +24,8 @@ class trig:
     ultratrig= 0
 
     def __init__(self):
-        self.audiotrig= 0
-        self.ultratrig= 0
+        audiotrig= 0
+        ultratrig= 0
 
     def set_audiotrig_up(self):
         self.audiotrig= 1
@@ -57,31 +57,25 @@ def corr2(a,b):
 
 def audio_check():
     print("audio_check_Starting")
+    (rate,t37) = wav.read("37.wav")
+    t37 = t37/32767.0    
+    t37e = abs(np.fft.fft(t37.T))
     while(1):
         print("start recording")
-        os.system("arecord -f cd -D plughw:1,0 -d 7 recorded_sound.wav")
-        print("recoring done--processing now")
-        (rate,t19) = wav.read("19.wav")    
-        (rate,t37) = wav.read("37.wav")
+        os.system("arecord -f cd -D plughw:1,0 -d 6 recorded_sound.wav")
+        print("recoring done--processing now")    
         (rate,t) = wav.read("recorded_sound.wav")
         t=t[0:264600]
-        t19 = t19/32767.0
-        t37 = t37/32767.0
         t = t/32767.0
-        t19e = abs(np.fft.fft(t19.T))
-        t37e = abs(np.fft.fft(t37.T))
         te = abs(np.fft.fft(t.T))
         R1 = corr2(t37e,te)
-        R2 = corr2(t19e,te)
         print(R1)
-        print(R2)
-        # if(R>0.65):
-        #     print("Train is Here")
-        if(R1>0.65 or R2>0.65):
+        if(R1>0.65 ):
             tr.set_audiotrig_up()
             print("audio_detected")
         else:
             tr.set_audiotrig_down()
+
 
 def ultra_check():
     print("start ultra_check")
@@ -112,24 +106,21 @@ def ultra_check():
         distance1 = pulse_duration1 * 17150
         distance2 = pulse_duration2 * 17150
 
-        distance1 = round(distance1, 2)
-        distance2 = round(distance2, 2)
-        #print(distance1)
-        #print(distance2)
+        #distance1 = round(distance1, 2)
+        #distance2 = round(distance2, 2)
+        print(distance1)
+        print(distance2)
         if(distance1<200 and distance2>200):
             flag=False
             var=1
             tr.set_ultratrig_down()
-        elif(distance1<20 and distance2<20 and var==1):
-            #GPIO.output(LED,True)
-            #print("LED ON")
-            print("ultra detected")
+        elif(distance1<200 and distance2<200 and var==1):
             tr.set_ultratrig_up()
-            time.sleep(5)                    #-------------------------------------------check
+            time.sleep(5)                    
             flag = True
         else:
             var=0
-            tr.set_ultratrig_down()
+            tr.set_ultratrig_up()
             flag=False
     GPIO.cleanup()
 
@@ -139,7 +130,7 @@ def Final_trig():
         if(tr.get_ultratrig()==1 and tr.get_audiotrig()==1):
             GPIO.output(LED,True)
             time.sleep(10)
-            print("-----TRAIN IS HERE----------------------")
+            print("TRAIN IS HERE-------------------------")
             GPIO.output(LED,False)
             
 tr = trig()
