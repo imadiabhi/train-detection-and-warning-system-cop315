@@ -44,12 +44,12 @@ while(True):
 
     distance1 = round(distance1, 2)
     distance2 = round(distance2, 2)
-    print(distance1)
-    print(distance2)
-    if(distance1<20 and distance2>20):
+    #print(distance1)
+    #print(distance2)
+    if(distance1<200 and distance2>200):
         flag=False
         var=1
-    elif(distance1<20 and distance2<20 and var==1):
+    elif(distance1<200 and distance2<200 and var==1):
         GPIO.output(LED,True)
         print("LED ON")
         flag = True
