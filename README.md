@@ -29,3 +29,9 @@ Bluetooth communication is used by us temporarily for communicating with warning
 
 This code continuously and concurrently run audio detection as well as obstacle detection code and make GPIO pin 25 high when train is detected by both audio and ultrasonic sensing. On connecting raspberry pi pin 25 to master arduino pin 2, signal will be sent by master bluetooth module and it will be recived by slave bluetooth module which will trigger a hooter.
 [Master arduino+bluetooth --> sender, Slave arduino+bluetooth --> receiver]
+
+
+### Links:
+Blog: https://medium.com/@cop.ghaks/safety-device-for-railway-track-workers-265cd55ec4d7
+Project video: https://www.youtube.com/watch?v=Y2kau7kRKZ4
+Demonstration video: https://www.youtube.com/watch?v=ekyyWt6Qc-o
